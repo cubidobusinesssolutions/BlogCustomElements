@@ -1,0 +1,15 @@
+{
+    "name": "sozialversicherungsnummer",
+    "version": "0.0.1",
+    "scripts": {
+        "serve": "http-server -a localhost -c 1 -p 6543 -o http://localhost:6543/index.html"
+    },
+    "dependencies": {},
+    "devDependencies": {
+        "concurrently": "^4.1.1",
+        "http-server": "^0.11.1"
+    }
+}
+
+
+

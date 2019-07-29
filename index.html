@@ -1,0 +1,37 @@
+<html>
+
+<head>
+    <script type="module" src="cu-svnr.js"></script>
+</head>
+
+<body>
+    <h1>Das ist eine Demo Seite</h1>
+    <div>
+        <a href="https://de.wikipedia.org/wiki/Sozialversicherungsnummer#/media/Datei:Ecard.svg" target="_blank">
+            <img style="max-height: 120px" src="https://upload.wikimedia.org/wikipedia/commons/0/0d/Ecard.svg" />
+        </a>
+        <h2>Berechung der Sozialversicherungsnummer</h2>
+        <p>
+            <b>123X 010180</b><br />
+            X = (1×3 + 2×7 + 3×9 + 0×5 + 1×8 + 0×4 + 1×2 + 8×1 + 0×6) mod 11<br />
+            X = 7<br />
+            Die Sozialversicherungsnummer lautet somit <b>1237 010180</b>.<br />
+        </p>
+        <a href="https://de.wikipedia.org/wiki/Sozialversicherungsnummer">Wikipedia Link</a>
+    </div>
+    <br />
+    <cu-svnr placeholder='1234011280'></cu-svnr>
+    <script>
+        const svnr = document.querySelector('cu-svnr');
+        import('./cu-svnr.js').then(() => {
+            svnr.addEventListener('onValueChanged', (event) => {
+                console.log(`"action" emitted: ${event.detail}`)
+            });
+            setTimeout(() => {
+                svnr.placeholder = '9876301117';
+            }, 2000);
+        });
+    </script>
+</body>
+
+</html>
