@@ -68,8 +68,10 @@ class CuSVNR extends HTMLElement {
         event.data = {
             value: this.value,
             valid: this.valid,
-            formatedValue: this.formatedValue(this.value)
+            formatedValue: this.$maskedSVNRInput.value
         };
+        
+        this.dispatchEvent(event);
     }
 
     isNumber(event) {
@@ -107,7 +109,7 @@ class CuSVNR extends HTMLElement {
         var posstart = this.$maskedSVNRInput.selectionStart;
         var posend = this.$maskedSVNRInput.selectionEnd;
         var charCode = event.keyCode;
-        console.log(charCode);
+        //console.log(charCode);
 
         if (this.$down[17] && this.$down[32]) {
             this.$maskedSVNRInput.value = this.$maskedSVNRInput.value.slice(0, -1);
@@ -116,8 +118,8 @@ class CuSVNR extends HTMLElement {
         if (event.keyCode === 32 || ((charCode > 47 && charCode < 58) || (charCode > 95 && charCode < 106))) {
             this.value = this.$maskedSVNRInput.value.replace(/\s/g, '');
             if (this.$maskedSVNRInput.selectionStart != this.$maskedSVNRInput.value.length && this.$maskedSVNRInput.value.length > 0) {
-                console.log('lenth: ' + this.$maskedSVNRInput.value.length);
-                console.log('start: ' + window.getSelection().getRangeAt(0).startOffset)
+             //   console.log('lenth: ' + this.$maskedSVNRInput.value.length);
+             //   console.log('start: ' + window.getSelection().getRangeAt(0).startOffset)
                 //middle manipulation
                 var newval = this.formatedSVNValue(this.value, '#');
                 this.$maskedSVNRInput.value = newval.replace(/#/g, '').trim();
@@ -133,7 +135,7 @@ class CuSVNR extends HTMLElement {
         }
         //Checkformat reformat ist
         this.valid = this.validateSVNR();
-
+        this.emittValue();
         this.$down[event.keyCode] = false;
 
     }

@@ -25,7 +25,7 @@
         const svnr = document.querySelector('cu-svnr');
         import('./cu-svnr.js').then(() => {
             svnr.addEventListener('onValueChanged', (event) => {
-                console.log(`"action" emitted: ${event.detail}`)
+                console.log(`"action" emitted: ${JSON.stringify(event.data)}`)
             });
             setTimeout(() => {
                 svnr.placeholder = '9876301117';
